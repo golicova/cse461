@@ -1,17 +1,48 @@
 #include <iostream> 
+#include <fstream> 
 
 using namespace std; 
 
 class PasswordFile
 {
     public: 
-        PasswordFile (string filename); 
-        void addpw (string newuser, string newpassword);
-        bool checkpw (string user, string passwd);
+        PasswordFile (string filename);                     // opens the file and reads the names/passwords in the vectors user and password.
+        void addpw (string newuser, string newpassword);    //this adds a new user/password to the vectors and writes the vectors to the file filename
+        bool checkpw (string user, string passwd);          // returns true if user exists and password matches
         
     private: 
-        string filename; 
-        vector <string> user; 
-        vector <string> password; 
-        voin synch(); 
+        string filename;                                    // the file that contains password information
+        vector <string> user;                               // the list of usernames
+        vector <string> password;                           // the list of passwords
+        voin synch();                                       // writes the user/password vectors to the password file
+}
+
+PasswordFile::PasswordFile(string filename)
+{
+    ifstream infile; 
+    string u, p; 
+    infile >> u >> p; 
+    while (infile.good())
+    {
+        user.push_back(u);
+        password.push_back(p);
+        infile >> u >> p; 
+    }
+    infile.close(); 
+    
+}
+
+void PasswordFile::addpw (string newuser, string newpassword)
+{
+    
+}
+
+bool PasswordFile::checkpw (string user, string passwd)
+{
+    
+}
+
+void PasswordFile::synch()
+{
+    
 }
