@@ -35,12 +35,25 @@ PasswordFile::PasswordFile(string filename)
 
 void PasswordFile::addpw (string newuser, string newpassword)
 {
-    
+    user.push_back(newuser);            // Add newuser
+    password.push_back(newpassword);    // Add newpassword
 }
 
 bool PasswordFile::checkpw (string user, string passwd)
 {
-    
+    // Iterate through each user (should be parallel with password vector)
+    for (int i = 0; i < PasswordFile::user.size; i++)
+    {
+        if (PasswordFile::user[i] == user)
+        {
+            if (PasswordFile::password[i] == passwd)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 void PasswordFile::synch()
