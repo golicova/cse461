@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <fstream> 
 #include <vector>
+#include <string>
 
 using namespace std; 
 
@@ -22,6 +23,15 @@ class PasswordFile
 PasswordFile::PasswordFile(string filename)
 {
     ifstream infile; 
+    
+    // Check if inFile exist, if not then create file with filename
+    if (!infile.)
+    {
+        
+    }
+    
+    infile.open(filename.c_str);
+    
     string u, p; 
     infile >> u >> p; 
     while (infile.good())
@@ -35,8 +45,19 @@ PasswordFile::PasswordFile(string filename)
 
 void PasswordFile::addpw (string newuser, string newpassword)
 {
-    user.push_back(newuser);            // Add newuser
-    password.push_back(newpassword);    // Add newpassword
+    // Check if user already exist, if so update only password
+    iterator (user.begin(), user.end(), newuser)
+    if(iterator == user.end()) 
+    {
+        user.push_back(newuser);            // Add newuser
+        password.push_back(newpassword);    // Add newpassword
+        synch(); 
+    }
+    else
+    {
+        cout << "User already exists." << endl; 
+    }    
+
 }
 
 bool PasswordFile::checkpw (string user, string passwd)
@@ -58,10 +79,33 @@ bool PasswordFile::checkpw (string user, string passwd)
 
 void PasswordFile::synch()
 {
-    
+    ofstream outFile;
+    outfile.open(filename.c_str());
+    for(int i = 0; i < user.size(); i++)
+    {
+        outFile << user[i] << " " << password[i] << endl;
+    }
+    outFile.close();
 }
 
 void PasswordFile::deleteUser (string oldUser)
 {
-    
+    while (i < user.size())
+    {
+        if(user[i] == oldUser)
+        {
+            // Overrite user[i] and password[i] values with last element value
+            user[i] = user[user.size() - 1];
+            password[i] = password[password.size() - 1];
+
+            // Delete the last element of the vectors
+            user.pop_back(); 
+            password.pop_back();
+
+        }
+        else 
+            i++;
+            
+    }
+    synch()
 }
