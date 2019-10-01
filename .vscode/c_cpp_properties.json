@@ -16,7 +16,8 @@
                     "C:\\MinGW\\lib\\gcc\\mingw32\\8.2.0\\include\\c++"
                 ],
                 "limitSymbolsToIncludedHeaders": true
-            }
+            },
+            "cppStandard": "c++20"
         }
     ],
     "version": 4

@@ -2,6 +2,7 @@
 #include <fstream> 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std; 
 
@@ -44,6 +45,7 @@ void PasswordFile::addpw (string newuser, string newpassword)
     
     // Declaring iterator to a vector 
     vector<string>::iterator it = user.begin(); 
+    
     it = find(user.begin(), user.end(), newuser);
 
     // Check if user already exist, if so update only password
