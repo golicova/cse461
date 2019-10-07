@@ -1,4 +1,5 @@
 #include <iostream> 
+#include <string>
 #include "Sdisk.h"
 
 using namespace std; 
