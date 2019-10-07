@@ -17,5 +17,5 @@ int main()
     disk1.putblock(8,block2);
     disk1.getblock(8,block4);
     cout << "Should be 32 2s : ";
-    cout << block4 << endl;;
+    cout << block4 << endl;
 }

@@ -55,7 +55,7 @@ Sdisk::Sdisk (string diskName, int numberOfBlocks, int blockSize)
 int Sdisk::getblock (int blockNumber, string& buffer)
 {
     fstream iofile;
-    iofile.open(this->diskName.c_str(), ios::in);
+    iofile.open(this->diskName.c_str(), ios::in);   // Ready for input
 
     if(iofile.fail())
     {
@@ -67,7 +67,7 @@ int Sdisk::getblock (int blockNumber, string& buffer)
 
     for (int i = 0; i < this-> blockSize; i++)
     {
-        buffer = iofile.get(); 
+        buffer += iofile.get(); 
     }
     
     iofile.close(); 
@@ -78,8 +78,7 @@ int Sdisk::getblock (int blockNumber, string& buffer)
 
 int Sdisk::putblock (int blockNumber, string buffer)
 {
-    fstream iofile;
-    iofile.open(this->diskName.c_str(), ios::in | ios::out);
+    fstream iofile(this->diskName.c_str(), ios::in | ios::out); // Ready for input/output
 
     if(iofile.fail())
     {
@@ -89,7 +88,7 @@ int Sdisk::putblock (int blockNumber, string buffer)
     iofile.seekp(blockNumber * this->blockSize);    // blocknumber k starts at k * blocksize
     char c; 
 
-    for (int i = 0; i < buffer.length() and i < this->blockSize; i++)
+    for (int i = 0; i < buffer.length() && i < this->blockSize; i++)
     {
         iofile.put(buffer[i]); 
     }
