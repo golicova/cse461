@@ -4,6 +4,7 @@
 
 using namespace std; 
 
+// The sample program for Lab 2
 int main()
 {
     Sdisk disk1("test1",16,32);
@@ -17,5 +18,5 @@ int main()
     disk1.putblock(8,block2);
     disk1.getblock(8,block4);
     cout << "Should be 32 2s : ";
-    cout << block4 << endl;;
+    cout << block4 << endl;
 }
