@@ -81,7 +81,10 @@ int Sdisk::getblock (int blockNumber, string& buffer)
     // Iterate through entire block to initialize buffer
     for (int i = 0; i < this-> blockSize; i++)
     {
+<<<<<<< HEAD
+=======
         // Start reading ioFile until end of block
+>>>>>>> cse461
         buffer += iofile.get(); 
     }
     
@@ -110,7 +113,10 @@ int Sdisk::putblock (int blockNumber, string buffer)
     iofile.seekp(blockNumber * this->blockSize);
     //char c; 
 
+<<<<<<< HEAD
+=======
     // Iterate through entire block to initialize buffer
+>>>>>>> cse461
     for (int i = 0; i < buffer.length() && i < this->blockSize; i++)
     {
         iofile.put(buffer[i]); 
