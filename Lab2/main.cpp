@@ -4,6 +4,7 @@
 
 using namespace std; 
 
+// The sample program for Lab 2
 int main()
 {
     Sdisk disk1("test1",16,32);
