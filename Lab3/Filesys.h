@@ -27,19 +27,50 @@ class Filesys: public Sdisk
         vector<int> fat;                // FAT
 };
 
-Filesys::Filesys() 
-{
-    
-}
+Filesys::Filesys() { }
 
 Filesys::Filesys(string diskname, int numberofblock, int blocksize)
 {
-    Sdisk (disk, int numberofblocks, int blocksize)
+
+    Sdisk  (disk, int numberofblocks, int blocksize)
+
+    // Check if Sdisk has a filesystem
     string buffer; 
     getblock (1, buffer); 
-    if(buffer[0] == "#")               // empty 
+
+    if(buffer[1] == "#")               // empty 
     {
         // no file, create and store
+        rootsize = getBlockSize() / 13;
+        ostringstream outstream;
+
+        for (int i = 1; i <= rootsize; i++)
+        {
+            // set up root 
+            filename.push_back("xxxxxxxx");
+            firstblock.push_back(0);
+            outstream << "xxxxxxxx" << " " << 0 << " ";
+        }
+
+        buffer = outstream.str();
+        vector<string> blocks = block(buffer, getBlockSize()); // getBlockLine()
+        putblock(1, blocks[0]);
+
+        // build the FAT
+        fatsize = getBlockSize() / 5; // 4 + 1
+        fat.push_back(2 + fatsize);
+        fat.push_back(-1);
+
+        for (int i = 1; i <= fatsize; i++)
+        {
+            fat.push_back(i + 1);
+            fat[fatsize() - 1] = 0;
+        }
+
+        for (int i = 2 + fatsize(); i < getNumberOfBlocks(); i++)
+        {
+            outstream << fat[i] << " ";
+        }
     }
 
     else 
@@ -50,12 +81,14 @@ Filesys::Filesys(string diskname, int numberofblock, int blocksize)
 
 int Filesys::fsclose()
 {
-
+    
 }
 
 int Filesys::fssynch()
 {
-    
+    // Write Root to the disk
+
+    // Write FAT to the disk
 }
 
 int Filesys::newfile(string file)
