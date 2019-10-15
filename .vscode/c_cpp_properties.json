@@ -3,21 +3,16 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:\\MinGW\\lib\\gcc\\mingw32\\8.2.0\\include\\c++"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "intelliSenseMode": "msvc-x64",
-            "browse": {
-                "path": [
-                    "C:\\MinGW\\lib\\gcc\\mingw32\\8.2.0\\include\\c++"
-                ],
-                "limitSymbolsToIncludedHeaders": true
-            },
-            "cppStandard": "c++20"
+            "compilerPath": "C:/MinGW/bin/g++.exe",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4
