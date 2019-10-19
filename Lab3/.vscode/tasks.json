@@ -2,10 +2,10 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "C++ Program",
+        "label": "build hello world",
         "type": "shell",
         "command": "g++",
-        "args": ["-g", "-o", "helloworld", "helloworld.cpp"],
+        "args": ["-g", "-o", "lab3", "-static", "main.cpp"], // -static required for string declarations in Windows 10
         "group": {
           "kind": "build",
           "isDefault": true

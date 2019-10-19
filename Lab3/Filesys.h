@@ -32,7 +32,7 @@ Filesys::Filesys() { }
 Filesys::Filesys(string diskname, int numberofblock, int blocksize)
 {
 
-    Sdisk  (disk, int numberofblocks, int blocksize)
+    Sdisk sdisk(disk, int numberofblocks, int blocksize);
 
     // Check if Sdisk has a filesystem
     string buffer; 
