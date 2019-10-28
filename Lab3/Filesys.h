@@ -29,7 +29,7 @@ class Filesys: public Sdisk
         vector<string> block(string buffer, int b);
 };
 
-Filesys::Filesys() {}
+Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskname, numberofblocks, blocksize) {}
 
 Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskname, numberofblocks, blocksize)
 {

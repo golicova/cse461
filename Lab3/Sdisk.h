@@ -21,7 +21,6 @@ class Sdisk
         int blockSize;                                                  // Block size in bytes
 };
 
-
 // Creates SD with initial name, amount of blocks, and sets a size per block
 Sdisk::Sdisk (string diskName, int numberOfBlocks, int blockSize)
 {
