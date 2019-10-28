@@ -33,18 +33,17 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
 
 Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskname, numberofblocks, blocksize)
 {
-    //Sdisk sdisk (diskname, numberofblocks, blocksize);  // How do we utilize this Sdisk object in this constructor?
-    
     // Check if Sdisk has a filesystem
     string buffer; 
     getblock (1, buffer); 
 
+    ostringstream outstream;
     // empty 
     if(buffer[1] == '#') 
     {
         // no file, create and store
         rootsize = getBlockSize() / 13;
-        ostringstream outstream;
+        //ostringstream outstream;
 
         for (int i = 1; i <= rootsize; i++)
         {
@@ -77,33 +76,76 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
 
     else 
     {
-        // read in file system, root is in buffer 
+        // read in ROOT 
+        istringstream instream; 
+        getblock(0, buffer);
+
+        instream.str(buffer);
+
+        for (int i = 0; i < rootsize; i++)
+        {
+            string file; 
+            int block;
+
+            instream >> file >> block; 
+            filename.push_back(file); 
+            firstblock.push_back(block);
+        }
+
+        // read in FAT 
+        istringstream instream2;
+        buffer.clear();
+
+        for (int i = 0; i < fatsize; i++)
+        {
+            string block;
+            getblock(2 + i, block);
+            buffer += block;
+        }
+
+        instream.str(buffer);
+
+        // Start from beginning
+        for (int i = 0; i < getNumberOfBlocks(); i++)
+        {
+            outstream << fat[i] << " ";
+        }
     }
 }
 
 int Filesys::fsclose()
 {
-    
+    fssynch();
+    cout << "Shutting down the filesystem." << endl; 
+    exit(1);  // maybe use a different exit command? 
 }
 
 int Filesys::fssynch()
 {
     string buffer; 
     ostringstream outstream; 
+    ostringstream outstream2;
 
     // Write Root to the disk
     for (int i = 0; i < filename.size(); i++)
     {
         outstream << filename[i] << " " << firstblock[i] << " ";
     }
+    buffer = outstream.str(); 
     
+    vector <string> blocks = block (buffer, getBlockSize());
+    for (int i = 0; i < rootsize; i++)
+    {
+        putblock (i, blocks[i]);
+    }
+
     // Write FAT to the disk
     for (int i = 0; i < fat.size(); i++)
     {
         outstream << fat[i] << " ";
     }
 
-    buffer = outstream.str(); 
+    buffer = outstream2.str(); 
 
     vector <string> blocks = block (buffer, getBlockSize());
     for (int i = 0; i < blocks.size; i++)
