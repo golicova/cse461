@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "sstream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "iostream": "cpp"
     }
 }

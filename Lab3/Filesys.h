@@ -27,6 +27,8 @@ class Filesys: public Sdisk
         vector<string> filename;        // filenames in ROOT
         vector<int> firstblock;         // firstblocks in ROOT
         vector<int> fat;                // FAT
+
+        //bool debugComponent = true;
 };
 
 Filesys::Filesys()
@@ -34,18 +36,33 @@ Filesys::Filesys()
 
 Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskname, numberofblocks, blocksize)
 {
+    rootsize = getBlockSize() / 13; 
+    fatsize = (4 * getNumberOfBlocks()) / getBlockSize() + 1; 
+    
+    //if (debugComponent)
+        cout << "Filesys Checkpoint 1!" << endl;
+
     // Check if Sdisk has a filesystem
     string buffer; 
     getblock (1, buffer); 
 
     ostringstream outstream;
     
+    //if (debugComponent)
+        cout << "Filesys Checkpoint 2!" << endl;
+
     // empty 
     if(buffer[1] == '#') 
     {
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 3!" << endl;
+
         // no file, create and store
         rootsize = getBlockSize() / 13;
         //ostringstream outstream;
+
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 4!" << endl;
 
         for (int i = 1; i <= rootsize; i++)
         {
@@ -55,32 +72,53 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
             outstream << "xxxxxxxx" << " " << 0 << " ";
         }
 
+        //if (debugComponent)
+            cout << "Filesys Checkpoint 5!" << endl;
+
         buffer = outstream.str();
         vector<string> blocks = block(buffer, getBlockSize()); // getBlockLine()
         putblock(1, blocks[0]);
+
+        //if (debugComponent)
+            cout << "Filesys Checkpoint 6!" << endl;
 
         // build the FAT
         fatsize = getBlockSize() / 5; // 4 + 1
         fat.push_back(2 + fatsize);
         fat.push_back(-1);
 
+        //if (debugComponent)
+            cout << "Filesys Checkpoint 7!" << endl;
+
         for (int i = 1; i <= fatsize; i++)
         {
-            fat.push_back(i + 1);
-            fat[fatsize - 1] = 0;
+            fat[i] = -1;
         }
+
+        //if (debugComponent)
+            cout << "Filesys Checkpoint 8!" << endl;
 
         for (int i = 2 + fatsize; i < getNumberOfBlocks(); i++)
         {
-            outstream << fat[i] << " ";
+            fat.push_back(i + 1);
         }
+        fat[getNumberOfBlocks() - 1] = 0;  
+
+        //if (debugComponent)
+            cout << "Filesys Checkpoint 9!" << endl;
     }
 
     else 
     {
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 10!" << endl;
+
         // read in ROOT 
         istringstream instream; 
         getblock(0, buffer);
+
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 11!" << endl;
 
         instream.str(buffer);
 
@@ -94,6 +132,9 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
             firstblock.push_back(block);
         }
 
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 12!" << endl;
+
         // read in FAT 
         istringstream instream2;
         buffer.clear();
@@ -105,14 +146,24 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
             buffer += block;
         }
 
-        instream.str(buffer);
+        instream2.str(buffer);
+
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 13!" << endl;
 
         // Start from beginning
         for (int i = 0; i < getNumberOfBlocks(); i++)
         {
-            outstream << fat[i] << " ";
+            instream2 >> i; 
+            fat.push_back(i);
         }
+
+        //if (debugComponent)
+        cout << "Filesys Checkpoint 14!" << endl;
     }
+
+    //if (debugComponent)
+        cout << "Filesys Checkpoint 15!" << endl;
 }
 
 int Filesys::fsclose()
@@ -306,7 +357,6 @@ int Filesys::delblock(string file, int blocknumber)
         }
 
         fat[iblock] = fat[blocknumber];
-        
     }
 
     fat[blocknumber] = fat[0];

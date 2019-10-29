@@ -4,7 +4,7 @@
 
 using namespace std; 
 
-bool debugComponent = true;
+bool debugComponentMain = true;
 
 int main()
 {
@@ -21,7 +21,7 @@ int main()
         bfile1+="1";
     }
 
-    if (debugComponent)
+    if (debugComponentMain)
         cout << "Checkpoint 1!" << endl;
 
     vector<string> blocks = fsys.block(bfile1, 128); 
@@ -33,7 +33,7 @@ int main()
         blocknumber=fsys.addblock("file1", blocks[i]);
     }
 
-    if (debugComponent)
+    if (debugComponentMain)
         cout << "Checkpoint 2!" << endl;
 
     fsys.delblock("file1", fsys.getfirstblock("file1"));
@@ -43,7 +43,7 @@ int main()
         bfile2 += "2";
     }
 
-    if (debugComponent)
+    if (debugComponentMain)
         cout << "Checkpoint 3!" << endl;
 
     blocks = fsys.block(bfile2, 128); 
@@ -53,12 +53,12 @@ int main()
         blocknumber=fsys.addblock("file2", blocks[i]);
     }
 
-    if (debugComponent)
+    if (debugComponentMain)
         cout << "Checkpoint 4!" << endl;
 
     fsys.delblock("file2", blocknumber);
 
-    if (debugComponent)
+    if (debugComponentMain)
         cout << "End of Main.cpp!" << endl;
 
     return 0;
