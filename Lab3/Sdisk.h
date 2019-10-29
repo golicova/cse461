@@ -10,6 +10,7 @@ using namespace std;
 class Sdisk
 {
     public :
+        Sdisk();
         Sdisk (string diskName, int numberOfBlocks, int blockSize);     // Creates SD with initial name, amount of blocks, and sets a size per block
         int getblock (int blockNumber, string& buffer);                 // Gets buffer string from block number
         int putblock (int blockNumber, string buffer);                  // Sets buffer string into block number
@@ -20,6 +21,9 @@ class Sdisk
         int numberOfBlocks;                                             // Number of blocks on disk
         int blockSize;                                                  // Block size in bytes
 };
+
+Sdisk::Sdisk()
+{}
 
 // Creates SD with initial name, amount of blocks, and sets a size per block
 Sdisk::Sdisk (string diskName, int numberOfBlocks, int blockSize)

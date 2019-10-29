@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>  // Use strings as our buffer
+#include <sstream>  
 #include <vector>
 #include <string>
 #include <algorithm>
+#include "Filesys.h"
 
 using namespace std;
 
@@ -20,7 +21,6 @@ class Sdisk
         int numberOfBlocks;                                             // Number of blocks on disk
         int blockSize;                                                  // Block size in bytes
 };
-
 
 // Creates SD with initial name, amount of blocks, and sets a size per block
 Sdisk::Sdisk (string diskName, int numberOfBlocks, int blockSize)

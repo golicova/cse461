@@ -20,16 +20,17 @@ class Filesys: public Sdisk
         int writeblock(string file, int blocknumber, string buffer);
         int nextblock(string file, int blocknumber);
         bool checkblock(string file, int blocknumber);
+        vector<string> block (string buffer, int b);
     private :
         int rootsize;                   // maximum number of entries in ROOT
         int fatsize;                    // number of blocks occupied by FAT
         vector<string> filename;        // filenames in ROOT
         vector<int> firstblock;         // firstblocks in ROOT
         vector<int> fat;                // FAT
-        vector<string> block(string buffer, int b);
 };
 
-Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskname, numberofblocks, blocksize) {}
+Filesys::Filesys()
+{}
 
 Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskname, numberofblocks, blocksize)
 {
@@ -38,6 +39,7 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
     getblock (1, buffer); 
 
     ostringstream outstream;
+    
     // empty 
     if(buffer[1] == '#') 
     {
@@ -133,7 +135,8 @@ int Filesys::fssynch()
     }
     buffer = outstream.str(); 
     
-    vector <string> blocks = block (buffer, getBlockSize());
+    vector<string> blocks = block(buffer, getBlockSize());
+    
     for (int i = 0; i < rootsize; i++)
     {
         putblock (i, blocks[i]);
@@ -147,11 +150,13 @@ int Filesys::fssynch()
 
     buffer = outstream2.str(); 
 
-    vector <string> blocks = block (buffer, getBlockSize());
-    for (int i = 0; i < blocks.size; i++)
+    blocks = block (buffer, getBlockSize());
+    for (int i = 0; i < blocks.size(); i++)
     {
         putblock (2 + i, blocks[i]);
     }
+
+    return 0;
 }
 
 int Filesys::newfile(string file)
@@ -177,6 +182,7 @@ int Filesys::newfile(string file)
             return 1;
         }
     }
+    return 0;
 }
 
 int Filesys::rmfile(string file)
@@ -306,6 +312,8 @@ int Filesys::delblock(string file, int blocknumber)
     fat[blocknumber] = fat[0];
     fat[0] = blocknumber;
     fssynch();
+
+    return 0; 
 }  
 
 int Filesys::readblock(string file, int blocknumber, string& buffer)
