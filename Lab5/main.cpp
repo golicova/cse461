@@ -1,65 +1,64 @@
-#include <iostream> 
+
+#include <iostream>
 #include <string>
-#include "Filesys.h"
 
-using namespace std; 
-
-bool debugComponentMain = true;
+using namespace std;
 
 int main()
 {
-    Sdisk disk1("disk1",256,128);
-    Filesys fsys("disk1",256,128);
-    fsys.newfile("file1");
-    fsys.newfile("file2");
+    //
+    //This main program inputs commands to the shell.
+    //It inputs commands as : command op1 op2
+    //You should modify it to work for your implementation.
+    //
 
-    string bfile1;
-    string bfile2;
+    string s;
+    string command = "go";
+    string op1, op2;
 
-    for (int i=1; i<=1024; i++)
+    while (command != "quit")
     {
-        bfile1+="1";
+        command.clear();
+        op1.clear();
+        op2.clear();
+        cout << "$";
+        getline(cin, s);
+
+        int firstblank = s.find(' ');
+        if (firstblank < s.length()) 
+            s[firstblank] = '#';
+
+        int secondblank = s.find(' ');
+        command = s.substr(0, firstblank);
+
+        if (firstblank < s.length())
+            op1 = s.substr(firstblank + 1, secondblank - firstblank - 1);
+
+        if (secondblank < s.length())
+            op2 = s.substr(secondblank + 1);
+
+        if (command == "dir")
+        {
+            // use the ls function
+        }
+        if (command == "add")
+        {
+            // The variable op1 is the new file
+        }
+        if (command == "del")
+        {
+            // The variable op1 is the file
+        }
+        if (command == "type")
+        {
+            // The variable op1 is the file
+        }
+        if (command == "copy")
+        {
+            // The variable op1 is the source file and the variable op2 is the destination file.
+        }
+       
     }
-
-    if (debugComponentMain)
-        cout << "Checkpoint 1!" << endl;
-
-    vector<string> blocks = fsys.block(bfile1, 128); 
-
-    int blocknumber=0;
-
-    for (int i = 0; i < blocks.size(); i++)
-    {
-        blocknumber=fsys.addblock("file1", blocks[i]);
-    }
-
-    if (debugComponentMain)
-        cout << "Checkpoint 2!" << endl;
-
-    fsys.delblock("file1", fsys.getfirstblock("file1"));
-
-    for (int i = 1; i <= 2048; i++)
-    {
-        bfile2 += "2";
-    }
-
-    if (debugComponentMain)
-        cout << "Checkpoint 3!" << endl;
-
-    blocks = fsys.block(bfile2, 128); 
-
-    for (int i = 0; i < blocks.size(); i++)
-    {
-        blocknumber=fsys.addblock("file2", blocks[i]);
-    }
-
-    if (debugComponentMain)
-        cout << "Checkpoint 4!" << endl;
-
-    fsys.delblock("file2", blocknumber);
-
-    if (debugComponentMain)
-        cout << "End of Main.cpp!" << endl;
 
     return 0;
 }
