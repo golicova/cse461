@@ -49,20 +49,20 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
     ostringstream outstream;
     
     //if (debugComponent)
-        cout << "Filesys Checkpoint 2!" << endl;
+        //cout << "Filesys Checkpoint 2!" << endl;
 
     // empty 
     if(buffer[1] == '#') 
     {
         //if (debugComponent)
-        cout << "Filesys Checkpoint 3!" << endl;
+        //cout << "Filesys Checkpoint 3!" << endl;
 
         // no file, create and store
         rootsize = getBlockSize() / 13;
         //ostringstream outstream;
 
         //if (debugComponent)
-        cout << "Filesys Checkpoint 4!" << endl;
+        //cout << "Filesys Checkpoint 4!" << endl;
 
         for (int i = 1; i <= rootsize; i++)
         {
@@ -73,14 +73,14 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
         }
 
         //if (debugComponent)
-            cout << "Filesys Checkpoint 5!" << endl;
+            //cout << "Filesys Checkpoint 5!" << endl;
 
         buffer = outstream.str();
         vector<string> blocks = block(buffer, getBlockSize()); // getBlockLine()
         putblock(1, blocks[0]);
 
         //if (debugComponent)
-            cout << "Filesys Checkpoint 6!" << endl;
+            //cout << "Filesys Checkpoint 6!" << endl;
 
         // build the FAT
         fatsize = getBlockSize() / 5; // 4 + 1
@@ -88,7 +88,7 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
         fat.push_back(-1);
 
         //if (debugComponent)
-            cout << "Filesys Checkpoint 7!" << endl;
+            //cout << "Filesys Checkpoint 7!" << endl;
 
         for (int i = 1; i <= fatsize; i++)
         {
@@ -96,7 +96,7 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
         }
 
         //if (debugComponent)
-            cout << "Filesys Checkpoint 8!" << endl;
+            //cout << "Filesys Checkpoint 8!" << endl;
 
         for (int i = 2 + fatsize; i < getNumberOfBlocks(); i++)
         {
@@ -111,14 +111,14 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
     else 
     {
         //if (debugComponent)
-        cout << "Filesys Checkpoint 10!" << endl;
+        //cout << "Filesys Checkpoint 10!" << endl;
 
         // read in ROOT 
         istringstream instream; 
         getblock(0, buffer);
 
         //if (debugComponent)
-        cout << "Filesys Checkpoint 11!" << endl;
+        //cout << "Filesys Checkpoint 11!" << endl;
 
         instream.str(buffer);
 
@@ -133,7 +133,7 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
         }
 
         //if (debugComponent)
-        cout << "Filesys Checkpoint 12!" << endl;
+        //cout << "Filesys Checkpoint 12!" << endl;
 
         // read in FAT 
         istringstream instream2;
@@ -149,7 +149,7 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
         instream2.str(buffer);
 
         //if (debugComponent)
-        cout << "Filesys Checkpoint 13!" << endl;
+        //cout << "Filesys Checkpoint 13!" << endl;
 
         // Start from beginning
         for (int i = 0; i < getNumberOfBlocks(); i++)
@@ -159,11 +159,11 @@ Filesys::Filesys(string diskname, int numberofblocks, int blocksize):Sdisk(diskn
         }
 
         //if (debugComponent)
-        cout << "Filesys Checkpoint 14!" << endl;
+        //cout << "Filesys Checkpoint 14!" << endl;
     }
 
     //if (debugComponent)
-        cout << "Filesys Checkpoint 15!" << endl;
+        //cout << "Filesys Checkpoint 15!" << endl;
 }
 
 int Filesys::fsclose()
@@ -176,36 +176,54 @@ int Filesys::fsclose()
 int Filesys::fssynch()
 {
     string buffer; 
-    ostringstream outstream; 
-    ostringstream outstream2;
+    ostringstream outstream, outstream2; 
 
-    // Write Root to the disk
-    for (int i = 0; i < filename.size(); i++)
-    {
-        outstream << filename[i] << " " << firstblock[i] << " ";
-    }
-    buffer = outstream.str(); 
-    
-    vector<string> blocks = block(buffer, getBlockSize());
-    
-    for (int i = 0; i < rootsize; i++)
-    {
-        putblock (i, blocks[i]);
-    }
+    //cout << "fssynch Checkpoint 1!" << endl;
 
-    // Write FAT to the disk
-    for (int i = 0; i < fat.size(); i++)
+   // Write FAT to the disk
+    for (int i = 0; i < getNumberOfBlocks(); i++)
     {
         outstream << fat[i] << " ";
     }
 
-    buffer = outstream2.str(); 
+    //cout << "fssynch Checkpoint 2!" << endl;
 
-    blocks = block (buffer, getBlockSize());
+    buffer = outstream.str(); 
+
+    //cout << "fssynch Checkpoint 3!" << endl;
+    
+    vector <string> blocks = block (buffer, getBlockSize());
+
+    //cout << "fssynch Checkpoint 4!" << endl;
+
+    for (int i = 1; i <= blocks.size(); i++)
+    {
+        putblock (i, blocks[i - 1]);
+    }
+
+    // Write Root to the disk
+    for (int i = 0; i < rootsize; i++)
+    {
+        outstream2 << filename[i] << " " << firstblock[i] << " ";
+    }
+
+    //cout << "fssynch Checkpoint 5!" << endl;
+
+    buffer = outstream2.str(); 
+    
+    blocks.clear(); 
+    blocks = block(buffer, getBlockSize());
+    
+    //cout << "fssynch Checkpoint 6!" << endl;
+
     for (int i = 0; i < blocks.size(); i++)
     {
-        putblock (2 + i, blocks[i]);
+        putblock (i, blocks[i]);
     }
+
+    //cout << "fssynch Checkpoint 7!" << endl;
+
+    //cout << "fssynch Checkpoint 8!" << endl;
 
     return 0;
 }
@@ -336,32 +354,55 @@ int Filesys::addblock(string file, string block)
 
 int Filesys::delblock(string file, int blocknumber)
 {
-    if (!checkblock(file, blocknumber))
+    cout << "delblock Checkpoint 1!" << endl;
+    
+    int iblock = getfirstblock(file);
+
+    if (iblock == 0) // block does not exist / is empty 
+    {
+        return 0; 
+    }
+
+    else if (iblock == blocknumber) // block to delete is the first block 
     {
         for (int i = 0; i < filename.size(); i++)
         {
-            if (file == filename[i])
+            if(filename[i] == file)
             {
                 firstblock[i] = fat[blocknumber];
-                break;
             }
         }
     }
+
     else 
     {
-        int iblock = getfirstblock(file);
-
-        while (fat[iblock] != blocknumber)
+        while (fat[iblock] != blocknumber && fat[iblock] != 0)
         {
+            cout << "iblock: " << iblock  << ", fat[iblock]: " << fat[iblock] << ", blocknumber: " << blocknumber << endl;
+
             iblock = fat[iblock];
         }
 
-        fat[iblock] = fat[blocknumber];
+        if (fat[iblock] != 0)
+        {
+            fat[iblock] = fat[blocknumber];
+        }
+
+        else 
+        {
+            return 0; 
+        }
     }
+
+    //cout << "delblock Checkpoint 6!" << endl;
 
     fat[blocknumber] = fat[0];
     fat[0] = blocknumber;
+    //cout << "delblock Checkpoint 7!" << endl;
+    
     fssynch();
+    
+    //cout << "delblock Checkpoint 8!" << endl;
 
     return 0; 
 }  
