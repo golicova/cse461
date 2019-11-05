@@ -21,13 +21,13 @@ class Filesys: public Sdisk
         int nextblock(string file, int blocknumber);
         bool checkblock(string file, int blocknumber);
         vector<string> block (string buffer, int b);
+        vector<string> ls();
     private :
         int rootsize;                   // maximum number of entries in ROOT
         int fatsize;                    // number of blocks occupied by FAT
         vector<string> filename;        // filenames in ROOT
         vector<int> firstblock;         // firstblocks in ROOT
         vector<int> fat;                // FAT
-
         //bool debugComponent = true;
 };
 
@@ -494,4 +494,19 @@ vector<string> Filesys::block(string buffer, int b)
     }
 
     return blocks;
+}
+
+// This function is part of the Filesys class
+// Prototype: vector<string> ls();
+vector<string> Filesys::ls()
+{ 
+    vector string flist;
+    for (int i=0; i<filename.size(); i++)
+    {
+        if (filename[i] != "XXXXX")
+        {
+            flist.push_back(filename[i]);
+        }
+    }
+    return flist;
 }
