@@ -42,5 +42,41 @@ int Shell::type(string file)
 
 int Shell::copy(string file1, string file2)
 {
+    int getFirstBlock (file1); 
+    if (code == 1) 
+    {
+        cout << "No such file." << endl; 
+        return 0; 
+    }
     
+    int code2 = getFirstBlock(file2); 
+    if (code2 != 1)
+    {
+        cout << "File 2 already exists." << endl; 
+        return 0; 
+    }
+    
+    int code3 = newFile(file2); 
+    if (code3 == 0)
+    {
+        cout << "No space in ROOT." << endl; 
+        return 0; 
+    }
+    
+    int iblock = code;
+    while (iblock != 0)
+    {
+        sting b; 
+        getBlock(file1, b);
+        int code4 = addBlock(file2, b); 
+        if (code4 == -1)
+        {
+            cout << "No space left." << endl; 
+            delete(file2); 
+            return 0; 
+        }
+        
+        iblock = nextBlock (file1, iblock); 
+    }
+    return 1; 
 }
