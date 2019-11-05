@@ -52,6 +52,7 @@ int Shell::type(string file)
 int Shell::copy(string file1, string file2)
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     int getFirstBlock (file1); 
     if (code == 1) 
     {
@@ -90,6 +91,10 @@ int Shell::copy(string file1, string file2)
     }
     return 1; 
 }
+=======
+
+}
+>>>>>>> Stashed changes
 =======
 
 }
