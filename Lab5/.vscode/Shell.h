@@ -8,18 +8,19 @@ class Shell: public Filesys
 {
     public :
         Shell(string filename, int blocksize, int numberofblocks);
-        int dir();                                                              // lists all files
+        int dir();// lists all files
         int add(string file);// add a new file using input from the keyboard
         int del(string file);// deletes the file
         int type(string file);//lists the contents of file
-        int copy(string file1, string file2);                                   //copies file1 to file2
+        int copy(string file1, string file2);//copies file1 to file2
 };
 
 Shell::Shell() {}
 
 Shell::Shell(string filename, int blocksize, int numberofblocks) 
 {
-
+    this->blockSize = blockSize;
+    cout << "Shell created succesfully." << '\n';
 }
 
 // dir lists files in the class Shell
@@ -36,21 +37,57 @@ int Shell::dir()
 
 int Shell::add(string file)
 {
-
+    string buffer;
+    char x;
+    cout << "Input file contents (~ to end): " << '\n';
+    cin.get(x);
+    
+    while (x != '~') 
+    {
+        buffer += x;
+        cin.get(x);
+    }
+    
+    newFile(file);
+    vector<string> blocked = block(buffer, this->blockSize);
+    
+    for (int i = 0; i < blocked.size(); i++) 
+    {
+        addBlock(file, blocked[i]);
+    }
 }
 
 int Shell::del(string file)
 {
+    while (getFirstBlock(file) > 0) 
+    {
+        delBlock(file, getFirstBlock(file));
+    }
 
+    rmFile(file);
 }
 
 int Shell::type(string file)
 {
+    string temp1;
+    string temp2;
+    int next = getFirstBlock(file);
+    readBlock(file, next, temp1);
+    int last = nextBlock(file, next);
 
+    while (last != 0) 
+    {
+        readBlock(file, last, temp2);
+        temp1 += temp2;
+        last = nextBlock(file, last);
+    }
+    cout << temp1 << '\n';
 }
 
 int Shell::copy(string file1, string file2)
 {
+    int iblock = code;
+
     int getFirstBlock (file1); 
     if (code == 1) 
     {
@@ -71,8 +108,7 @@ int Shell::copy(string file1, string file2)
         cout << "No space in ROOT." << endl; 
         return 0; 
     }
-    
-    int iblock = code;
+
     while (iblock != 0)
     {
         sting b; 

@@ -500,10 +500,10 @@ vector<string> Filesys::block(string buffer, int b)
 // Prototype: vector<string> ls();
 vector<string> Filesys::ls()
 { 
-    vector string flist;
-    for (int i=0; i<filename.size(); i++)
+    vector<string> flist;
+    for (int i = 0; i < filename.size(); i++)
     {
-        if (filename[i] != "XXXXX")
+        if (filename[i] != "XXXXXXXX")
         {
             flist.push_back(filename[i]);
         }
