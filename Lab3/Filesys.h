@@ -249,6 +249,7 @@ int Filesys::newfile(string file)
     {
         if (filename[i] == "xxxxxxxx")
         {
+            filename[i] = file;
             fssynch();
             return 1;
         }
@@ -327,7 +328,7 @@ int Filesys::addblock(string file, string block)
             {
                 firstblock[i] = allocate;
                 fssynch();
-                putblock(allocate, buffer);     // Where is our buffer value coming from?
+                putblock(allocate, block);     // Where is our buffer value coming from?
                 return allocate;
             }
         }
@@ -346,7 +347,7 @@ int Filesys::addblock(string file, string block)
     fat[iblock] = allocate; 
     
     fssynch();
-    putblock(allocate, buffer);     // Where is our buffer value coming from?
+    putblock(allocate, block);     // Where is our buffer value coming from?
     return allocate;
 }
 
