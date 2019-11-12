@@ -17,9 +17,9 @@ int main()
     string bfile1;
     string bfile2;
 
-    for (int i=1; i<=1024; i++)
+    for (int i = 1; i <= 1024; i++)
     {
-        bfile1+="1";
+        bfile1 += "1";
     }
 
     if (debugComponentMain)
@@ -27,11 +27,11 @@ int main()
 
     vector<string> blocks = fsys.block(bfile1, 128); 
 
-    int blocknumber=0;
+    int blocknumber = 0;
 
     for (int i = 0; i < blocks.size(); i++)
     {
-        blocknumber=fsys.addblock("file1", blocks[i]);
+        blocknumber = fsys.addblock("file1", blocks[i]);
     }
 
     if (debugComponentMain)
