@@ -286,14 +286,10 @@ int Filesys::getfirstblock(string file)
         {
             return firstblock[i];
         }
-        else 
-        {
-            return -1;
-        }
     }
 
     cout << "No such file exists!" << endl;
-    return 0;
+    return -1;
 }
 
 int Filesys::addblock(string file, string block)
@@ -360,7 +356,7 @@ int Filesys::delblock(string file, int blocknumber)
     
     int iblock = getfirstblock(file);
 
-    if (iblock == 0) // block does not exist / is empty 
+    if (iblock == -1) // block does not exist / is empty 
     {
         return 0; 
     }
@@ -378,7 +374,7 @@ int Filesys::delblock(string file, int blocknumber)
 
     else 
     {
-        while (fat[iblock] != blocknumber && fat[iblock] != 0)
+        while (fat[iblock] != 0 && fat[iblock] != blocknumber)
         {
             cout << "iblock: " << iblock  << ", fat[iblock]: " << fat[iblock] << ", blocknumber: " << blocknumber << endl;
 
