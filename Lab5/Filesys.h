@@ -239,7 +239,7 @@ int Filesys::newfile(string file)
     {
         if (filename[i] == file)
         {
-            cout << "file name" << endl;
+            cout << "file exists" << endl;
             return 0;
         }
     }
@@ -247,6 +247,7 @@ int Filesys::newfile(string file)
     {
         if (filename[i] == "xxxxxxxx")
         {
+            filename[i] = file;
             fssynch();
             return 1;
         }
