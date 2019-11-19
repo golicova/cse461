@@ -1,3 +1,9 @@
+/*
+Name
+CSE 461
+Lab 5 + 6
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <string>

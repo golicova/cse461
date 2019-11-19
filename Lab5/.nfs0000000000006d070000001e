@@ -1,0 +1,187 @@
+Script started on 2019-11-19 11:33:08-08:00
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ fjkdshf
+bash: fjkdshf: command not found...
+sdfhjksdhf
+^C
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g++ main.cp
+[01m[Kg++:[m[K [01;31m[Kerror: [m[Kmain.cp: No such file or directory
+[01m[Kg++:[m[K [01;31m[Kfatal error: [m[Kno input files
+compilation terminated.
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ts[K[Kscript end
+Script started, file is end
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ks
+bash: ks: command not found...
+^C
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ls
+[0m[38;5;40ma.out[0m  disk1  end  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h  typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g[Kgedit typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ rm typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ls
+[0m[38;5;40ma.out[0m  disk1  end  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ r[Kgei[Kdit end
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ rm end
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ls
+[0m[38;5;40ma.out[0m  disk1  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ clear
+[3J[H[2J]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g[Kscript
+Script started, file is typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g+ [K+ main.cpp
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ .a/.out
+bash: .a/.out: No such file or directory
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ a,[K[K.a[K.[K/a.out
+Filesys Checkpoint 1!
+Filesys Checkpoint 2!
+Shell created succesfully.
+$^C
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ end
+bash: end: command not found...
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ls
+[0m[38;5;40ma.out[0m  disk1  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h  typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ geidt ty[K[K[K[K[K[Kdit typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ rm typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ clear
+[3J[H[2J]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g++[K[K[Kscript
+Script started, file is typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g++ mi[Kain.cpp
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ./a.out
+Filesys Checkpoint 1!
+Filesys Checkpoint 2!
+Shell created succesfully.
+$
+$
+$exit
+$^C
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ei[Kxit
+exit
+Script done, file is typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ gedi tyt[K[K[K[K[Kt ty[K[K[K[Kit typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ rm typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ls
+[0m[38;5;40ma.out[0m  disk1  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ cler
+bash: cler: command not found...
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ cler[K[Kar[K[Kear
+[3J[H[2J]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ;ls[K[K[Kls
+[0m[38;5;40ma.out[0m  disk1  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ rm fir[K[K[Kdisk1 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ ls
+[0m[38;5;40ma.out[0m  Filesys.h  main2.cpp  main.cpp  Sdisk.h  Shell.h
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ script
+Script started, file is typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g++ min[K[Kain.cpp
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ .a[K/a.out
+Filesys Checkpoint 1!
+Filesys Checkpoint 2!
+Filesys Checkpoint 3!
+Filesys Checkpoint 4!
+Filesys Checkpoint 5!
+Filesys Checkpoint 6!
+Filesys Checkpoint 7!
+Filesys Checkpoint 8!
+Filesys Checkpoint 9!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+Shell created succesfully.
+$add file1
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+hello~
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+Not Empty
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+$$dir
+file1
+$cope y file1 file2
+No such file exists!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+Not Empty
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+$dir
+file1
+file2
+$rm    dl el file1
+delblock Checkpoint 1!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+delblock Checkpoint 1!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+$type file2
+################################################################################################################################hello###########################################################################################################################
+256
+$dir
+file2
+$^C
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ exit
+exit
+Script done, file is typescript
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ gedit typescript 
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ [K[005461881@csusb.

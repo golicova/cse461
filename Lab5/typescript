@@ -1,0 +1,117 @@
+Script started on 2019-11-19 11:35:39-08:00
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ g++ min[K[Kain.cpp
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ .a[K/a.out
+Filesys Checkpoint 1!
+Filesys Checkpoint 2!
+Filesys Checkpoint 3!
+Filesys Checkpoint 4!
+Filesys Checkpoint 5!
+Filesys Checkpoint 6!
+Filesys Checkpoint 7!
+Filesys Checkpoint 8!
+Filesys Checkpoint 9!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+Shell created succesfully.
+$add file1
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+hello~
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+Not Empty
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+$$dir
+file1
+$cope y file1 file2
+No such file exists!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+Not Empty
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+$dir
+file1
+file2
+$rm    dl el file1
+delblock Checkpoint 1!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+delblock Checkpoint 1!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+fssynch Checkpoint 1!
+fssynch Checkpoint 2!
+fssynch Checkpoint 3!
+fssynch Checkpoint 4!
+fssynch Checkpoint 5!
+fssynch Checkpoint 6!
+fssynch Checkpoint 7!
+fssynch Checkpoint 8!
+$type file2
+################################################################################################################################hello###########################################################################################################################
+256
+$dir
+file2
+$^C
+]0;005461881@csusb.edu@jb359-21:~/CSE 461/cse461/Lab5[005461881@csusb.edu@jb359-21 Lab5]$ exit
+exit
+
+Script done on 2019-11-19 11:36:24-08:00
