@@ -36,8 +36,13 @@ int Shell::dir()
 int Shell::add(string file)
 {
     string buffer;
+	for (int i = 0; i < this->blockSize; i++)   // blockSize = 128
+	{
+		buffer += '#';
+	}
+
+    /*
     char x;
-    cout << "Input file contents (~ to end): " << '\n';
     cin.get(x);
     
     while (x != '~') 
@@ -45,9 +50,10 @@ int Shell::add(string file)
         buffer += x;
         cin.get(x);
     }
-    
+    */
+   
     newfile(file);
-    vector<string> blocked = block(buffer, this->blockSize);
+    vector<string> blocked = block(buffer, this->blockSize);    // blockSize = 128
     
     for (int i = 0; i < blocked.size(); i++) 
     {
