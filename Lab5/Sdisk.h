@@ -18,8 +18,9 @@ class Sdisk
         int getBlockSize();                                             // Accessor function to return the blockSize set in Sdisk
     private :
         string diskName;                                                // File name of software-disk
-        int numberOfBlocks;                                             // Number of blocks on disk
+    protected:
         int blockSize;                                                  // Block size in bytes
+        int numberOfBlocks;                                             // Number of blocks on disk
 };
 
 Sdisk::Sdisk()
