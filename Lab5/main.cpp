@@ -1,6 +1,6 @@
-
 #include <iostream>
 #include <string>
+#include "Shell.h"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ int main()
     //It inputs commands as : command op1 op2
     //You should modify it to work for your implementation.
     //
-
+    
     string s;
     string command = "go";
     string op1, op2;
@@ -40,25 +40,28 @@ int main()
         if (command == "dir")
         {
             // use the ls function
+            Shell::dir();
         }
         if (command == "add")
         {
             // The variable op1 is the new file
+            Shell::add(op1);
         }
         if (command == "del")
         {
             // The variable op1 is the file
+            Shell::del(op1);
         }
         if (command == "type")
         {
             // The variable op1 is the file
+            Shell::type(op1);
         }
         if (command == "copy")
         {
             // The variable op1 is the source file and the variable op2 is the destination file.
-        }
-       
+            Shell::copy(op1, op2);
+        }  
     }
-
     return 0;
 }
