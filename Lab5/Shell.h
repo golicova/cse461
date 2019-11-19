@@ -16,11 +16,8 @@ class Shell: public Filesys
         string getFile(string filename);
 };
 
-Shell::Shell(string filename, int blocksize, int numberofblocks) 
+Shell::Shell(string diskname, int numberofblocks, int blocksize): Filesys(diskname, numberofblocks, blocksize)
 {
-    //this->filename.push_back(filename); 
-    this->blockSize = blockSize;
-    //this->numberofblocks = numberofblocks;
     cout << "Shell created succesfully." << '\n';
 }
 
@@ -31,17 +28,20 @@ int Shell::dir()
     {
         cout << flist[i] << endl;
     }
+
+    return 1;
 }
 
 int Shell::add(string file)
 {
+    newfile(file);
+
     string buffer;
-	for (int i = 0; i < this->blockSize; i++)   // blockSize = 128
+	for (int i = 0; i < 128; i++)   // blockSize = 128
 	{
 		buffer += '#';
 	}
 
-    /*
     char x;
     cin.get(x);
     
@@ -50,15 +50,15 @@ int Shell::add(string file)
         buffer += x;
         cin.get(x);
     }
-    */
-   
-    newfile(file);
-    vector<string> blocked = block(buffer, this->blockSize);    // blockSize = 128
+    
+    vector<string> blocked = block(buffer, 128);    // blockSize = 128
     
     for (int i = 0; i < blocked.size(); i++) 
     {
         addblock(file, blocked[i]);
     }
+
+    return 1;
 }
 
 int Shell::del(string file)
@@ -69,65 +69,63 @@ int Shell::del(string file)
     }
 
     rmfile(file);
+    return 1; 
 }
 
 int Shell::type(string file)
 {
-    string temp1;
-    string temp2;
-    int next = getfirstblock(file);
-    readblock(file, next, temp1);
-    int last = nextblock(file, next);
-
-    while (last != 0) 
-    {
-        readblock(file, last, temp2);
-        temp1 += temp2;
-        last = nextblock(file, last);
-    }
-    cout << temp1 << '\n';
+	int block = getfirstblock(file);
+	string buffer;
+	while (block > 0)
+	{
+		string t;
+		int error = readblock(file, block, t);
+		buffer += t;
+		block = nextblock(file, block);
+	}
+	cout << buffer << endl;
+	cout << buffer.length() << endl;
+	return 1;
 }
 
-int Shell::copy(string file1, string file2)   // does not accept files 
+int Shell::copy(string file1, string file2)
 {
-    int code1 = getfirstblock (file1);
-    int iblock = code1;
-
-    if (code1 == 1) 
+    int code = getfirstblock(file1);
+    if (code == -1)
     {
-        cout << "No such file." << endl; 
-        return 0; 
+        cout << "file does not exist";
+        return -1;
     }
-    
-    int code2 = getfirstblock(file2); 
-    if (code2 != 1)
+    int code2 = getfirstblock(file2);
+    if (code2 != -1)
     {
-        cout << "File 2 already exists." << endl; 
-        return 0; 
+        cout << "file2 already exists";
+        return -1;
     }
-    
-    int code3 = newfile(file2); 
+    int code3 = newfile(file2);
     if (code3 == 0)
     {
-        cout << "No space in ROOT." << endl; 
-        return 0; 
+        cout << "no space on root";
+        return -1;
     }
-
+    
+    int iblock = code; //iblock is firstblock
     while (iblock != 0)
     {
-        string b; 
-        getblock(b, file1);               // fix buffer parameter
-        int code4 = addblock(file2, b); 
-        if (code4 == -1)
-        {
-            cout << "No space left." << endl; 
-            delete(file2); 
-            return 0; 
-        }
-        
-        iblock = nextblock (file1, iblock); 
+       string b;
+       readblock(file1, iblock, b);
+       int code4 = addblock(file2, b);
+       if (code4 == -1)
+       {
+           cout << "no space left";
+           del(file2);
+           return -1;
+       }
+       iblock = nextblock(file1, iblock);
+       
     }
-    return 1; 
+
+    return 1;
 }
 
 string Shell::getFile(string filename)
