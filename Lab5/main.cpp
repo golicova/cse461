@@ -23,7 +23,7 @@ int main()
     string op1, op2;
 
     Shell* shell = new Shell ("disk1", 256, 128);
-
+    
     while (command != "quit")
     {
         command.clear();
@@ -69,6 +69,10 @@ int main()
         {
             // The variable op1 is the source file and the variable op2 is the destination file.
             shell->copy(op1, op2);
+        }
+        if (command == "clobber")
+        {
+            shell->clobber(op1);
         }  
     }
     return 0;

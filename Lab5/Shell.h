@@ -20,6 +20,7 @@ class Shell: public Filesys
         int type(string file);//lists the contents of file
         int copy(string file1, string file2);//copies file1 to file2
         string getFile(string filename);
+        int clobber(string file);
 };
 
 Shell::Shell(string diskname, int numberofblocks, int blocksize): Filesys(diskname, numberofblocks, blocksize)
@@ -154,4 +155,46 @@ string Shell::getFile(string filename)
     }
 
     return buffer;
+}
+
+int Shell::clobber(string file)
+{
+    int iblock = getfirstblock(file);
+
+    // Non-recursive
+    /*
+    if (iblock == -1)
+    {
+        cout << "no such file";
+        return 0;
+    }
+
+    while(iblock != 0)
+    {
+        delblock(file, iblock);
+        int iblock2 = nextblock(file, iblock);
+        iblock = iblock2;
+    }
+    */
+
+    // Recursive
+    if (iblock == -1)
+    {
+        cout << "no such file";
+        return 0;
+    }
+    else
+    {
+        if (iblock != 0)
+        {
+            delblock(file, iblock);
+            int iblock2 = nextblock(file, iblock);
+            iblock = iblock2;
+            clobber(file);
+        }
+    }
+    
+    rmfile(file);   
+
+    return 1;
 }
