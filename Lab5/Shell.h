@@ -188,6 +188,7 @@ int Shell::clobber(string file)
         if (iblock != 0)
         {
             delblock(file, iblock);
+            cout << "Deleting block " << iblock << " from file " << file << endl;
             int iblock2 = nextblock(file, iblock);
             iblock = iblock2;
             clobber(file);
