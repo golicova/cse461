@@ -20,7 +20,7 @@ int main()
     //
     Sdisk sdisk=Sdisk("sdisk.txt", 256, 128);
     Filesys fsys = Filesys("sdisk.txt", 256, 128);
-    Shell* shell=Shell("sdisk.txt", 256, 128);
+    Shell* shell = Shell("sdisk.txt", 256, 128);
     Table* table = Table("sdisk.txt", 256, 128);
     
     table.BuildTable("data.txt");
@@ -54,6 +54,11 @@ int main()
         {
             // use the ls function
             shell->dir();
+        }
+        if (command == "search")
+        {
+            // The variable op1 is the date
+            table->Search(op1);
         }
         if (command == "add")
         {
