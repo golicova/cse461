@@ -21,7 +21,7 @@ int main()
     Sdisk sdisk=Sdisk("sdisk.txt", 256, 128);
     Filesys fsys = Filesys("sdisk.txt", 256, 128);
     Shell* shell = Shell("sdisk.txt", 256, 128);
-    Table* table = Table("sdisk.txt", 256, 128);
+    Table* table = Table("sdisk.txt", 256, 128, "flatfile", "indexfile");
     
     table.BuildTable("data.txt");
 

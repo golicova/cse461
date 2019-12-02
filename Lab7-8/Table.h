@@ -7,7 +7,7 @@
 class Table : public Filesys
 {
     public :
-        Table(string diskname,int blocksize,int numberofblocks, string flatfile, string indexfile);
+        Table(string diskname, int numberofblocks, int blocksize, string flatfile, string indexfile);
         int BuildTable(string input_file);
         int Search(string value);
     private :
@@ -18,9 +18,14 @@ class Table : public Filesys
         int IndexSearch(string value);
 };
 
-Table::Table(string diskname, int blocksize, int numberofblocks, string flatfile, string indexfile)
+Table::Table(string diskname, int numberofblocks, int blocksize, string flatfile, string indexfile)
 {
+    // Create flatfile in filesys
+
+
+    // Create indexfile in filesys
     
+
     cout << "Table created" << endl;
     
 }
