@@ -18,16 +18,44 @@ class Table : public Filesys
         int IndexSearch(string value);
 };
 
-Table::Table(string diskname, int numberofblocks, int blocksize, string flatfile, string indexfile)
+Table::Table(string diskname, int numberofblocks, int blocksize, string flatfile, string indexfile):Filesys(diskname, numberofblocks, blocksize)
 {
+    ifstream infile;
+    infile.open(diskname.c_str);
+    
     // Create flatfile in filesys
+    newfile(flatfile);
 
+    string buffer1;
+	for (int i = 0; i < blocksize; i++)   // blockSize = 128
+	{
+		buffer1 += '#';
+	}
+    
+    vector<string> blocked = block(buffer1, blocksize);    // blockSize = 128
+    
+    for (int i = 0; i < blocked.size(); i++) 
+    {
+        addblock(flatfile, blocked[i]);
+    }
 
     // Create indexfile in filesys
+    newfile(indexfile);
+
+    string buffer2;
+	for (int i = 0; i < blocksize; i++)   // blockSize = 128
+	{
+		buffer2 += '#';
+	}
     
+    vector<string> blocked = block(buffer2, blocksize);    // blockSize = 128
+    
+    for (int i = 0; i < blocked.size(); i++) 
+    {
+        addblock(indexfile, blocked[i]);
+    }
 
     cout << "Table created" << endl;
-    
 }
 
 int Table::BuildTable(string input_file)
@@ -68,10 +96,8 @@ int Table::Search(string value)
     int blockid = IndexSearch(value);
 
     // Read and Record blockid
-    readblock(indexfile, blockid, buffer);
-
-
-    return 1;
+    string buffer;
+    return readblock(indexfile, blockid, buffer);
 }
 
 int Table::IndexSearch(string value)

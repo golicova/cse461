@@ -18,7 +18,7 @@ int main()
     //It inputs commands as : command op1 op2
     //You should modify it to work for your implementation.
     //
-    Sdisk sdisk=Sdisk("sdisk.txt", 256, 128);
+    Sdisk sdisk = Sdisk("sdisk.txt", 256, 128);
     Filesys fsys = Filesys("sdisk.txt", 256, 128);
     Shell* shell = Shell("sdisk.txt", 256, 128);
     Table* table = Table("sdisk.txt", 256, 128, "flatfile", "indexfile");
