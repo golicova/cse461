@@ -14,7 +14,7 @@ class Table : public Filesys
         string flatfile;
         string indexfile;
         int numberofrecords;
-        Filesys filesystem;
+        //Filesys filesystem;
         int IndexSearch(string value);
 };
 
@@ -50,7 +50,7 @@ int Table::BuildTable(string input_file)
 
     while(infile.good())
     {
-        string pKey = record.subtr(0,5); 
+        string pKey = record.substr(0,5); 
         vector<string> oblock = block(record, getBlockSize());
         int blockid = addblock (flatfile, oblock[0]);
         outstream << pKey << " " << blockid << " "; 

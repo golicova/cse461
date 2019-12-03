@@ -23,7 +23,7 @@ int main()
     Shell* shell = Shell("sdisk.txt", 256, 128);
     Table* table = Table("sdisk.txt", 256, 128, "flatfile", "indexfile");
     
-    table.BuildTable("data.txt");
+    table->BuildTable("data.txt");
 
     string s;
     string command="go";
