@@ -1,3 +1,7 @@
+
+#ifndef TABLE_H
+#define TABLE_H
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -43,7 +47,7 @@ int Table::BuildTable(string input_file)
 
     string record; 
     int count = 0; 
-    infile.getline() >> record; 
+    getline(infile, record); 
     vector<string> key; 
     vector<string> iblock; 
     ostringstream outstream;
@@ -63,6 +67,7 @@ int Table::BuildTable(string input_file)
             count = 0; 
             outstream.clear();
         } 
+        getline(infile, record); 
     }
     return 1; 
 
@@ -116,3 +121,5 @@ int Table::IndexSearch(string value)
     
     return 1;
 }
+
+#endif

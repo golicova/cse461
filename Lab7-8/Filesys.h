@@ -4,6 +4,9 @@ CSE 461
 Lab 5 + 6
 */
 
+#ifndef FILESYS_H
+#define FILESYS_H
+
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -511,3 +514,5 @@ vector<string> Filesys::ls()
     }
     return flist;
 }
+
+#endif

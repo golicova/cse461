@@ -4,6 +4,9 @@ CSE 461
 Lab 5 + 6
 */
 
+#ifndef SHELL_H
+#define SHELL_H
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -199,3 +202,5 @@ int Shell::clobber(string file)
 
     return 1;
 }
+
+#endif

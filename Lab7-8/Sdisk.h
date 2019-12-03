@@ -4,6 +4,9 @@ CSE 461
 Lab 5 + 6
 */
 
+#ifndef SDISK_H
+#define SDISK_H
+
 #include <iostream>
 #include <fstream>
 #include <sstream>  // Use strings as our buffer
@@ -141,3 +144,5 @@ int Sdisk::getBlockSize()
 {  
     return this->blockSize; 
 }
+
+#endif
