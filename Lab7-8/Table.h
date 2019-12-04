@@ -52,22 +52,30 @@ int Table::BuildTable(string input_file)
     vector<string> iblock; 
     ostringstream outstream;
 
-    while(infile.good())
+    while(getline(infile, record))
     {
+        cout << "Table Checkpoint 0!" << endl;
+        //cout << "record: " << record << endl;
         string pKey = record.substr(0,5); 
         vector<string> oblock = block(record, getBlockSize());
-        int blockid = addblock (flatfile, oblock[0]);
+        cout << "oblock[0]: " << oblock[0] << endl;
+        int blockid = addblock (flatfile, oblock[0]); // Fuck you!!!
+        cout << "blockid: " << blockid << endl;
         outstream << pKey << " " << blockid << " "; 
         count++; 
-        
+
         if(count == 4)
         {
+            cout << "Table Checkpoint 1!" << endl;
             vector<string> o2block = block(outstream.str(), getBlockSize());
             addblock(indexfile, o2block[0]);
             count = 0; 
-            outstream.clear();
+            outstream.str("");
+            cout << "Table Checkpoint 2!" << endl;
         } 
-        getline(infile, record); 
+        //getline(infile, record); 
+        cout << "record: " << record << endl;
+        cout << "Table Checkpoint 3!" << endl;
     }
     return 1; 
 
